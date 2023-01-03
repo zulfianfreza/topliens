@@ -10,8 +10,7 @@ if (!isset($_SESSION['logged_in'])) {
     exit();
 }
 include '../koneksi.php';
-$halaman = $_GET['halaman'];
-$status = $_GET['status'];
+$halaman = isset($_GET['halaman']) ? $_GET['halaman'] : '';
 $query = mysqli_query($koneksi, "SELECT*FROM tbl_user where username='$_SESSION[username]'");
 $user = mysqli_fetch_assoc($query);
 ?>
@@ -261,6 +260,8 @@ $user = mysqli_fetch_assoc($query);
                         include './kritik_dan_saran.php';
                     } else if ($halaman == 'akumulasi') {
                         include './akumulasi.php';
+                    } else if ($halaman == 'evaluasi') {
+                        include './evaluasi.php';
                     }
                     ?>
 

@@ -1,5 +1,5 @@
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Akumulasi Kritik & Saran</h1>
+<h1 class="h3 mb-4 text-gray-800">Evaluasi</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -53,7 +53,7 @@
     </div>
     <div class="card-footer d-flex justify-content-end">
         <button type="button" class="btn btn-success">
-            Diagram
+            Lihat Rekomendasi Perbaikan Layanan Jasa Perbaikan
         </button>
     </div>
 </div>
