@@ -32,8 +32,8 @@ if (isset($_SESSION['username'])) {
                     <div class="card p-4 shadow-sm">
                         <div class="card-body">
                             <div class="justify-content-center text-center">
-                                <p class="fs-4 my-3 mb-5 fw-bold">CV. Topliens Tekhnik</p>
-                                <!-- <img src="./assets/img/rumahsakit.png" alt="" height="50px" class="my-3 mb-5"> -->
+                                <p class="fs-4 my-3 mb-3 fw-bold">CV. Topliens Tekhnik</p>
+                                <img src="./assets/img/logo.png" alt="" height="100px" class="my-3 mb-5">
                             </div>
                             <?php if (isset($_SESSION['toast_type'])) {
                             ?>

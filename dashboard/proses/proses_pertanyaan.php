@@ -15,6 +15,16 @@ if ($_GET['aksi'] == 'tambah') {
         exit();
     }
 
+    $query = mysqli_query($koneksi, "SELECT*FROM tbl_pertanyaan WHERE id_pertanyaan='$id_pertanyaan'");
+    $check = mysqli_num_rows($query);
+
+    if ($check > 0) {
+        $_SESSION['toast_type'] = 'error';
+        $_SESSION['toast_message'] = 'ID pertanyaan sudah ada, silahkan gunakan ID pertanyaan yang lain.';
+        header('location:../index.php?halaman=tambah-pertanyaan');
+        exit();
+    }
+
     $query = mysqli_query($koneksi, "INSERT INTO tbl_pertanyaan (id_pertanyaan, pertanyaan, id_aspek) VALUES('$id_pertanyaan', '$pertanyaan', '$aspek')");
     if ($query) {
         $_SESSION['toast_type'] = 'success';

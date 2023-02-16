@@ -34,10 +34,10 @@ if ($_GET['aksi'] == 'login') {
 if ($_GET['aksi'] == 'register') {
     $nama = $_POST['nama'];
     $no_bon = $_POST['no_bon'];
-    $password = md5($_POST['password']);
+    $password = $_POST['password'];
     $no_handphone = $_POST['no_handphone'];
 
-    if (!$nama || !$no_bon || !$password || $no_handphone) {
+    if (!$nama || !$no_bon || !$password || !$no_handphone) {
         $_SESSION['toast_type'] = 'error';
         $_SESSION['toast_message'] = 'Nama, no. bon, password, dan no. handphone tidak boleh kosong, silahkan isi!';
         header('location:daftar.php');
@@ -54,6 +54,8 @@ if ($_GET['aksi'] == 'register') {
     } else {
         echo mysqli_error($koneksi);
     }
+
+    $password = md5($password);
 
     $query = mysqli_query($koneksi, "INSERT INTO tbl_user(nama, username, password, no_handphone) VALUES('$nama','$no_bon', '$password', '$no_handphone')");
     if ($query) {

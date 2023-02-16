@@ -136,6 +136,12 @@ $user = mysqli_fetch_assoc($query);
             <?php
             if ($user['role'] == 'admin') {
             ?>
+                <li class="nav-item <?= $halaman == 'evaluasi' || $halaman == 'tambah-evaluasi' || $halaman == 'ubah-evaluasi' ? 'active' : '' ?>">
+                    <a class="nav-link" href="index.php?halaman=evaluasi">
+                        <i class="fas fa-fw fa-user-cog"></i>
+                        <span>Evaluasi</span>
+                    </a>
+                </li>
 
                 <li class="nav-item <?= $halaman == 'pertanyaan' || $halaman == 'tambah-pertanyaan' || $halaman == 'ubah-pertanyaan' ? 'active' : '' ?>">
                     <a class="nav-link" href="index.php?halaman=pertanyaan">
@@ -144,17 +150,17 @@ $user = mysqli_fetch_assoc($query);
                     </a>
                 </li>
 
+                <li class="nav-item <?= $halaman == 'kuisioner' || $halaman == 'detail-kuisioner' ? 'active' : '' ?>">
+                    <a class="nav-link" href="index.php?halaman=kuisioner">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Kuisioner</span>
+                    </a>
+                </li>
+
                 <li class="nav-item <?= $halaman == 'akumulasi' || $halaman == 'tambah-akumulasi' || $halaman == 'ubah-akumulasi' ? 'active' : '' ?>">
                     <a class="nav-link" href="index.php?halaman=akumulasi">
                         <i class="fas fa-fw fa-user-cog"></i>
                         <span>Akumulasi Kritik & Saran</span>
-                    </a>
-                </li>
-
-                <li class="nav-item <?= $halaman == 'evaluasi' || $halaman == 'tambah-evaluasi' || $halaman == 'ubah-evaluasi' ? 'active' : '' ?>">
-                    <a class="nav-link" href="index.php?halaman=evaluasi">
-                        <i class="fas fa-fw fa-user-cog"></i>
-                        <span>Evaluasi</span>
                     </a>
                 </li>
 
@@ -259,9 +265,19 @@ $user = mysqli_fetch_assoc($query);
                     } else if ($halaman == 'kritik-dan-saran') {
                         include './kritik_dan_saran.php';
                     } else if ($halaman == 'akumulasi') {
+                        include './akumulasi2.php';
+                    } else if ($halaman == 'akumulasi2') {
                         include './akumulasi.php';
                     } else if ($halaman == 'evaluasi') {
                         include './evaluasi.php';
+                    } else if ($halaman == 'tambah-evaluasi') {
+                        include './tambah_evaluasi.php';
+                    } else if ($halaman == 'ubah-evaluasi') {
+                        include './ubah_evaluasi.php';
+                    } else if ($halaman == 'kuisioner') {
+                        include './kuisioner.php';
+                    } else if ($halaman == 'detail-kuisioner') {
+                        include './detail_kuisioner.php';
                     }
                     ?>
 

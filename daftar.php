@@ -32,8 +32,8 @@ if (isset($_SESSION['username'])) {
                     <div class="card p-4 shadow-sm">
                         <div class="card-body">
                             <div class="justify-content-center text-center">
-                                <p class="fs-4 my-3 mb-5 fw-bold">CV. Topliens Tekhnik</p>
-                                <!-- <img src="./assets/img/rumahsakit.png" alt="" height="50px" class="my-3 mb-5"> -->
+                                <p class="fs-4 my-3 mb-3 fw-bold">CV. Topliens Tekhnik</p>
+                                <img src="./assets/img/logo.png" alt="" height="100px" class="my-3 mb-5">
                             </div>
                             <?php if (isset($_SESSION['toast_type'])) {
                             ?>
@@ -55,7 +55,7 @@ if (isset($_SESSION['username'])) {
                                     </span>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control py-2" placeholder="No. Handphone" name="no_phone" value="">
+                                    <input type="text" class="form-control py-2" placeholder="No. Handphone" name="no_handphone" value="">
                                 </div>
                                 <button type="submit" class="btn btn-primary w-100">Daftar</button>
                                 <div class="mt-3 d-flex justify-content-center">
