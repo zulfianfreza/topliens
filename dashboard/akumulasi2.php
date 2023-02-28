@@ -6,14 +6,14 @@ $tahun = isset($_GET['tahun']) ? $_GET['tahun'] : date('Y');
 ?>
 
 <!-- Page Heading -->
-<h1 class="h3 mb-4 text-gray-800">Akumulasi Kritik & Saran</h1>
+<h1 class="h3 mb-4 text-gray-800">Rekomendasi Hasil Evaluasi</h1>
 
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex align-items-end">
         <h6 class="font-weight-bold">Periode</h6>
     </div>
     <form action="" method="GET">
-        <input type="hidden" name="halaman" value="akumulasi">
+        <input type="hidden" name="halaman" value="rekomendasi">
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-3">
@@ -46,7 +46,7 @@ $tahun = isset($_GET['tahun']) ? $_GET['tahun'] : date('Y');
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3 d-flex align-items-center justify-content-between">
-        <h6 class="m-0 font-weight-bold">Akumulasi Kritik & Saran Pada Jasa Pelayanan Perbaikan CV. Topliens Tekhnik</h6>
+        <h6 class="m-0 font-weight-bold">Rekomendasi Hasil Evaluasi Pada Jasa Pelayanan Perbaikan CV. Topliens Tekhnik</h6>
     </div>
     <div class="card-body">
 

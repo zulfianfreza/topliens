@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 16 Feb 2023 pada 14.40
+-- Waktu pembuatan: 28 Feb 2023 pada 13.26
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.0.25
 
@@ -88,7 +88,7 @@ CREATE TABLE `tbl_info_perusahaan` (
 --
 
 INSERT INTO `tbl_info_perusahaan` (`id`, `nama`, `isi`) VALUES
-(1, 'deskripsi', 'CV. Topliens Tekhnik adalah salah satu perusahaan yang bergerak dalam bidang elektronik dan memiliki jasa seperti perbaikan barang dan jasa pembersihan.\r\n\r\nLokasi: Ruko Kramatwatu, Jl. Raya Serang No. 17A, Kota Serang, Banten.\r\n\r\nInformasi Jasa :\r\n- Jasa Perbaikan Barang Elektronik\r\n- Jasa Pembersihan Air Conditioner\r\n- Jasa Perbaikan Spare Part Elektronik\r\n\r\nInformasi Jual - Beli\r\nJual :\r\n- Air Conditioner\r\n- Kulkas\r\n- Mesin Cuci'),
+(1, 'deskripsi', 'CV. Topliens Tekhnik adalah salah satu perusahaan yang bergerak dalam bidang elektronik dan memiliki jasa seperti perbaikan barang dan jasa pembersihan.\r\n\r\nLokasi: Ruko Kramatwatu, Jl. Raya Serang No. 17A, Kota Serang, Banten.'),
 (2, 'info_layanan', 'Informasi Jasa :\r\n- Jasa Perbaikan Barang Elektronik\r\n- Jasa Pembersihan Air Conditioner\r\n- Jasa Perbaikan Spare Part Elektronik\r\n\r\nInformasi Jual - Beli \r\nJual :\r\n- Air Conditioner\r\n- Kulkas\r\n- Mesin Cuci\r\n- dll');
 
 -- --------------------------------------------------------
@@ -348,7 +348,45 @@ INSERT INTO `tbl_jawaban` (`id_jawaban`, `id_kuisioner`, `id_pertanyaan`, `jawab
 (317, 41, 'V5', 'SB'),
 (318, 41, 'V6', 'SB'),
 (319, 41, 'V7', 'SB'),
-(320, 41, 'V8', 'SB');
+(320, 41, 'V8', 'SB'),
+(321, 42, 'V1', 'SB'),
+(322, 42, 'V2', 'SB'),
+(323, 42, 'V3', 'SB'),
+(324, 42, 'V4', 'SB'),
+(325, 42, 'V5', 'SB'),
+(326, 42, 'V6', 'SB'),
+(327, 42, 'V7', 'SB'),
+(328, 42, 'V8', 'SB'),
+(329, 43, 'V1', 'SB'),
+(330, 43, 'V2', 'SB'),
+(331, 43, 'V3', 'KB'),
+(332, 43, 'V4', 'SB'),
+(333, 43, 'V5', 'SB'),
+(334, 43, 'V6', 'KB'),
+(335, 43, 'V7', 'SB'),
+(336, 43, 'V8', 'SB');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_kritik_dan_saran`
+--
+
+CREATE TABLE `tbl_kritik_dan_saran` (
+  `id_kritik_dan_saran` int(11) NOT NULL,
+  `username` varchar(16) NOT NULL,
+  `tanggal` datetime NOT NULL,
+  `kritik` text NOT NULL,
+  `saran` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `tbl_kritik_dan_saran`
+--
+
+INSERT INTO `tbl_kritik_dan_saran` (`id_kritik_dan_saran`, `username`, `tanggal`, `kritik`, `saran`) VALUES
+(1, '00700', '2023-02-28 12:24:41', 'Contoh kritik', 'contoh saran'),
+(2, '00999', '2023-02-28 19:18:27', 'Contoh', 'Contoh');
 
 -- --------------------------------------------------------
 
@@ -396,7 +434,9 @@ INSERT INTO `tbl_kuisioner` (`id_kuisioner`, `username`, `tanggal`) VALUES
 (38, '00727', '2023-01-15 19:52:22'),
 (39, '00728', '2023-01-15 19:52:36'),
 (40, '00729', '2023-01-15 19:52:50'),
-(41, '00730', '2023-01-15 19:53:04');
+(41, '00730', '2023-01-15 19:53:04'),
+(42, '007100', '2023-02-16 21:05:57'),
+(43, '00999', '2023-02-28 19:18:18');
 
 -- --------------------------------------------------------
 
@@ -436,7 +476,7 @@ CREATE TABLE `tbl_user` (
   `username` varchar(16) NOT NULL,
   `password` varchar(255) NOT NULL,
   `no_handphone` varchar(16) NOT NULL,
-  `role` enum('customer','admin') NOT NULL
+  `role` enum('customer','admin','ceo') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -445,7 +485,8 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`id`, `nama`, `username`, `password`, `no_handphone`, `role`) VALUES
 (1, 'Admin', 'admin', '26875f4883b3e7df8060324368567b4a', '', 'admin'),
-(4, 'Julian Reza', '00700', 'e10adc3949ba59abbe56e057f20f883e', '', 'customer'),
+(2, 'CEO', 'ceo', '55161575f3e05dfb61145c5d63d67d29', '', 'ceo'),
+(4, 'Julian Reza', '00700', '8d86341404a29c76aab264b9e191b4a1', '', 'customer'),
 (5, 'Jo', '00701', '674f33841e2309ffdd24c85dc3b999de', '', 'customer'),
 (6, 'Adam Berriz', '00702', '1d7c2923c1684726dc23d2901c4d8157', '', 'customer'),
 (7, 'Albert Rotinaluhu', '00703', '6c5bc43b443975b806740d8e41146479', '', 'customer'),
@@ -475,7 +516,9 @@ INSERT INTO `tbl_user` (`id`, `nama`, `username`, `password`, `no_handphone`, `r
 (31, 'Fajar Yusrin', '00727', 'e008389b46065ea87f8e395a520daeba', '08968768768', 'customer'),
 (32, 'Reza Pratama', '00728', 'e66d3e0225739f3c9913bbbb983d91a2', '08287687622', 'customer'),
 (33, 'M. Ruslan', '00729', '6819ca5323059519e543c2413e87338b', '08992287686', 'customer'),
-(34, 'Deni Afrianto', '00730', '953f50463cbe1f514b0afaaae2b8f6ce', '08122888722', 'customer');
+(34, 'Deni Afrianto', '00730', '953f50463cbe1f514b0afaaae2b8f6ce', '08122888722', 'customer'),
+(35, '007100', '007100', '7df9a2424e629a25843f46011eb9a397', '09820980928', 'customer'),
+(36, 'Jhon LBF', '00999', '98c977e8101ca85e27701d77d57077ad', '08829879287', 'customer');
 
 --
 -- Indexes for dumped tables
@@ -506,6 +549,12 @@ ALTER TABLE `tbl_jawaban`
   ADD PRIMARY KEY (`id_jawaban`),
   ADD KEY `id_kuisioner` (`id_kuisioner`),
   ADD KEY `id_pertanyaan` (`id_pertanyaan`);
+
+--
+-- Indeks untuk tabel `tbl_kritik_dan_saran`
+--
+ALTER TABLE `tbl_kritik_dan_saran`
+  ADD PRIMARY KEY (`id_kritik_dan_saran`);
 
 --
 -- Indeks untuk tabel `tbl_kuisioner`
@@ -554,19 +603,25 @@ ALTER TABLE `tbl_info_perusahaan`
 -- AUTO_INCREMENT untuk tabel `tbl_jawaban`
 --
 ALTER TABLE `tbl_jawaban`
-  MODIFY `id_jawaban` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=321;
+  MODIFY `id_jawaban` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=337;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_kritik_dan_saran`
+--
+ALTER TABLE `tbl_kritik_dan_saran`
+  MODIFY `id_kritik_dan_saran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_kuisioner`
 --
 ALTER TABLE `tbl_kuisioner`
-  MODIFY `id_kuisioner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_kuisioner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

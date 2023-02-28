@@ -134,21 +134,23 @@ $user = mysqli_fetch_assoc($query);
             </li>
 
             <?php
-            if ($user['role'] == 'admin') {
+            if ($user['role'] == 'admin' or $user['role'] == 'ceo') {
+                if ($user['role'] == 'admin') {
             ?>
-                <li class="nav-item <?= $halaman == 'evaluasi' || $halaman == 'tambah-evaluasi' || $halaman == 'ubah-evaluasi' ? 'active' : '' ?>">
-                    <a class="nav-link" href="index.php?halaman=evaluasi">
-                        <i class="fas fa-fw fa-user-cog"></i>
-                        <span>Evaluasi</span>
-                    </a>
-                </li>
+                    <li class="nav-item <?= $halaman == 'evaluasi' || $halaman == 'tambah-evaluasi' || $halaman == 'ubah-evaluasi' ? 'active' : '' ?>">
+                        <a class="nav-link" href="index.php?halaman=evaluasi">
+                            <i class="fas fa-fw fa-user-cog"></i>
+                            <span>Evaluasi</span>
+                        </a>
+                    </li>
 
-                <li class="nav-item <?= $halaman == 'pertanyaan' || $halaman == 'tambah-pertanyaan' || $halaman == 'ubah-pertanyaan' ? 'active' : '' ?>">
-                    <a class="nav-link" href="index.php?halaman=pertanyaan">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Pertanyaan</span>
-                    </a>
-                </li>
+                    <li class="nav-item <?= $halaman == 'pertanyaan' || $halaman == 'tambah-pertanyaan' || $halaman == 'ubah-pertanyaan' ? 'active' : '' ?>">
+                        <a class="nav-link" href="index.php?halaman=pertanyaan">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Pertanyaan</span>
+                        </a>
+                    </li>
+                <?php } ?>
 
                 <li class="nav-item <?= $halaman == 'kuisioner' || $halaman == 'detail-kuisioner' ? 'active' : '' ?>">
                     <a class="nav-link" href="index.php?halaman=kuisioner">
@@ -157,39 +159,32 @@ $user = mysqli_fetch_assoc($query);
                     </a>
                 </li>
 
-                <li class="nav-item <?= $halaman == 'akumulasi' || $halaman == 'tambah-akumulasi' || $halaman == 'ubah-akumulasi' ? 'active' : '' ?>">
-                    <a class="nav-link" href="index.php?halaman=akumulasi">
-                        <i class="fas fa-fw fa-user-cog"></i>
-                        <span>Akumulasi Kritik & Saran</span>
-                    </a>
-                </li>
-
-            <?php
-            }
-            ?>
-
-            <?php
-            if ($user['role'] == 'customer') {
-
-
-            ?>
-                <li class="nav-item <?= $halaman == 'kritik-dan-saran' || $halaman == 'tambah-kritik-dan-saran' || $halaman == 'ubah-kritik-dan-saran' ? 'active' : '' ?>">
+                <li class="nav-item <?= $halaman == 'kritik-dan-saran' || $halaman == 'detail-kritik-dan-saran' ? 'active' : '' ?>">
                     <a class="nav-link" href="index.php?halaman=kritik-dan-saran">
                         <i class="fas fa-fw fa-user-cog"></i>
                         <span>Kritik & Saran</span>
                     </a>
                 </li>
+
+                <li class="nav-item <?= $halaman == 'rekomendasi' || $halaman == 'tambah-rekomendasi' || $halaman == 'ubah-rekomendasi' ? 'active' : '' ?>">
+                    <a class="nav-link" href="index.php?halaman=rekomendasi">
+                        <i class="fas fa-fw fa-user-cog"></i>
+                        <span>Rekomendasi Hasil Evaluasi</span>
+                    </a>
+                </li>
+
+
             <?php
+
             }
             ?>
-
 
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
-                <a href="../proses_autentikasi.php?aksi=logout" class="nav-link">
+                <a href="../proses/proses_autentikasi.php?aksi=logout" class="nav-link">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span>Keluar</span>
                 </a>
@@ -264,7 +259,7 @@ $user = mysqli_fetch_assoc($query);
                         include './ubah_info_layanan.php';
                     } else if ($halaman == 'kritik-dan-saran') {
                         include './kritik_dan_saran.php';
-                    } else if ($halaman == 'akumulasi') {
+                    } else if ($halaman == 'rekomendasi') {
                         include './akumulasi2.php';
                     } else if ($halaman == 'akumulasi2') {
                         include './akumulasi.php';
@@ -278,6 +273,8 @@ $user = mysqli_fetch_assoc($query);
                         include './kuisioner.php';
                     } else if ($halaman == 'detail-kuisioner') {
                         include './detail_kuisioner.php';
+                    } else if ($halaman == 'detail-kritik-dan-saran') {
+                        include './detail_kritik_dan_saran.php';
                     }
                     ?>
 

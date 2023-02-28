@@ -38,15 +38,14 @@ if (isset($_SESSION['username'])) {
                             <?php if (isset($_SESSION['toast_type'])) {
                             ?>
 
-                                <div class="alert alert-danger"><?= $_SESSION['toast_message'] ?></div>
+                                <div class="alert <?= $_SESSION['toast_type'] == 'error' ? 'alert-danger' : 'alert-success' ?>"><?= $_SESSION['toast_message'] ?></div>
 
-                            <?php } ?>
-                            <form action="./proses/proses_autentikasi.php?aksi=register" method="POST">
+                            <?php
+                            }
+                            ?>
+                            <form action="./proses/proses_autentikasi.php?aksi=login" method="POST">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control py-2" placeholder="Nama" name="nama" value="">
-                                </div>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control py-2" placeholder="No. Bon" name="no_bon" value="">
+                                    <input type="text" class="form-control py-2" placeholder="Username atau No. Bon" name="username" value="">
                                 </div>
                                 <div class="input-group mb-3">
                                     <input type="password" class="form-control py-2 border-end-0" placeholder="Password" name="password" id="password">
@@ -54,12 +53,13 @@ if (isset($_SESSION['username'])) {
                                         <i class="far fa-eye" id="toggle" onclick="togglePassword()" style="cursor: pointer"></i>
                                     </span>
                                 </div>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control py-2" placeholder="No. Handphone" name="no_handphone" value="">
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                    <label class="form-check-label text-secondary" for="exampleCheck1">Biarkan saya login</label>
                                 </div>
-                                <button type="submit" class="btn btn-primary w-100">Daftar</button>
+                                <button type="submit" class="btn btn-primary w-100">Login</button>
                                 <div class="mt-3 d-flex justify-content-center">
-                                    <p class="text-secondary">Sudah punya akun? <a href="./login.php" class="text-primary">Masuk</a></p>
+                                    <p class="text-secondary">Belum punya akun? <a href="./daftar.php" class="text-primary">Daftar</a></p>
                                     <!-- <a href="./login.php">Login sebagai pegawai.</a> -->
                                 </div>
                             </form>

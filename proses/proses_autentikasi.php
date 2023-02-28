@@ -1,6 +1,6 @@
 <?php
 
-include './koneksi.php';
+include '../koneksi.php';
 session_start();
 
 if ($_GET['aksi'] == 'login') {
@@ -9,7 +9,7 @@ if ($_GET['aksi'] == 'login') {
     if (!$username or !$password) {
         $_SESSION['toast_type'] = 'error';
         $_SESSION['toast_message'] = 'Username atau password tidak boleh kosong.';
-        header('location:index.php');
+        header('location:../login.php');
         exit();
     }
     $query = mysqli_query($koneksi, "SELECT*FROM tbl_user WHERE username='$username' AND password='$password'");
@@ -22,11 +22,15 @@ if ($_GET['aksi'] == 'login') {
         $_SESSION['username'] = $data['username'];
         $_SESSION['toast_type'] = 'success';
         $_SESSION['toast_message'] = 'Login berhasil.';
-        header('location:dashboard');
+        if ($data['role'] == 'customer') {
+            header('location:../index.php');
+        } else {
+            header('location:../dashboard');
+        }
     } else {
         $_SESSION['toast_type'] = 'error';
         $_SESSION['toast_message'] = 'Username atau password salah, silahkan coba kembali.';
-        header('location:index.php');
+        header('location:../login.php');
         exit();
     }
 }
@@ -40,7 +44,7 @@ if ($_GET['aksi'] == 'register') {
     if (!$nama || !$no_bon || !$password || !$no_handphone) {
         $_SESSION['toast_type'] = 'error';
         $_SESSION['toast_message'] = 'Nama, no. bon, password, dan no. handphone tidak boleh kosong, silahkan isi!';
-        header('location:daftar.php');
+        header('location:../daftar.php');
         exit();
     }
 
@@ -49,7 +53,7 @@ if ($_GET['aksi'] == 'register') {
     if ($check > 0) {
         $_SESSION['toast_type'] = 'error';
         $_SESSION['toast_message'] = 'Username telah ada, silahkan gunakan username yang lain.';
-        header('location:daftar.php');
+        header('location:../daftar.php');
         exit();
     } else {
         echo mysqli_error($koneksi);
@@ -61,12 +65,12 @@ if ($_GET['aksi'] == 'register') {
     if ($query) {
         $_SESSION['toast_type'] = 'success';
         $_SESSION['toast_message'] = 'Proses daftar berhasil, silahkan login';
-        header('location:index.php');
+        header('location:../login.php');
         exit();
     }
 }
 
 if ($_GET['aksi'] == 'logout') {
     unset($_SESSION['username']);
-    header('location:index.php');
+    header('location:../index.php');
 }

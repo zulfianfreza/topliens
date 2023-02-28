@@ -3,7 +3,7 @@
 date_default_timezone_set('Asia/Jakarta');
 
 session_start();
-include '../../koneksi.php';
+include '../koneksi.php';
 
 if ($_GET['aksi'] == 'tambah') {
     $id_pertanyaan = $_POST['id_pertanyaan'];
@@ -23,6 +23,6 @@ if ($_GET['aksi'] == 'tambah') {
         }
         $_SESSION['toast_type'] = 'sw2_success';
         $_SESSION['toast_message'] = 'Terima Kasih atas partisipasi anda untuk memberikan penilaian dalam upaya perbaikan kualitas pelayanan jasa perbaikan.';
-        header('location:../index.php?halaman=kritik-dan-saran');
+        header('location:../index.php?halaman=kuisioner');
     }
 }
