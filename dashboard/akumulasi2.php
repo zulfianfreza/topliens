@@ -162,7 +162,7 @@ $tahun = isset($_GET['tahun']) ? $_GET['tahun'] : date('Y');
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Diagram</h5>
+                <h5 class="modal-title">Rekomendasi Hasil Evaluasi</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -170,23 +170,28 @@ $tahun = isset($_GET['tahun']) ? $_GET['tahun'] : date('Y');
             <div class="modal-body">
                 <?php
                 if (count($temp_id) > 0) {
-                    $temp_q = array_filter($temp_q, function ($v) {
-                        return $v < 0;
-                    });
-                    $min = min($temp_q);
-                    $index = array_search($min, $temp_q);
-                    $query = mysqli_query($koneksi, "SELECT*FROM tbl_pertanyaan WHERE id_pertanyaan='$temp_id[$index]'");
-                    $data = mysqli_fetch_assoc($query);
+                    // $temp_q = array_filter($temp_q, function ($v) {
+                    //     return $v < 0;
+                    // });
+                    // $min = min($temp_q);
+                    // $index = array_search($min, $temp_q);
+                    array_multisort($temp_q, $temp_id);
+                    for ($i = 0; $i < 2; $i++) {
+                        $index = array_search($temp_q[$i], $temp_q);
+
+                        $query = mysqli_query($koneksi, "SELECT*FROM tbl_pertanyaan WHERE id_pertanyaan='$temp_id[$index]'");
+                        $data = mysqli_fetch_assoc($query);
                 ?>
-                    <p><b>(<?= $temp_id[$index] ?>)</b> <?= $data['pertanyaan'] ?></p>
+                        <p><b><?= $i == 0 ? 'Prioritas: ' : '' ?> (<?= $temp_id[$index] ?>)</b> <?= $data['pertanyaan'] ?></p>
+                        <?php
+                        $query = mysqli_query($koneksi, "SELECT*FROM tbl_evaluasi WHERE id_pertanyaan='$temp_id[$index]'");
+                        $res = mysqli_fetch_assoc($query);
+                        ?>
+                        <p><?= $res['evaluasi'] ?></p>
                     <?php
-                    $query = mysqli_query($koneksi, "SELECT*FROM tbl_evaluasi WHERE id_pertanyaan='$temp_id[$index]'");
-                    $res = mysqli_fetch_assoc($query);
-                    ?>
-                    <p><?= $res['evaluasi'] ?></p>
-                <?php
+                    }
                 } else {
-                ?>
+                    ?>
                     <p>Data Kosong !</p>
                 <?php
                 }

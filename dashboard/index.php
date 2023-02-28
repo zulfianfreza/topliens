@@ -166,12 +166,19 @@ $user = mysqli_fetch_assoc($query);
                     </a>
                 </li>
 
-                <li class="nav-item <?= $halaman == 'rekomendasi' || $halaman == 'tambah-rekomendasi' || $halaman == 'ubah-rekomendasi' ? 'active' : '' ?>">
-                    <a class="nav-link" href="index.php?halaman=rekomendasi">
-                        <i class="fas fa-fw fa-user-cog"></i>
-                        <span>Rekomendasi Hasil Evaluasi</span>
-                    </a>
-                </li>
+                <?php
+                if ($user['role'] == 'ceo') {
+                ?>
+                    <li class="nav-item <?= $halaman == 'rekomendasi' || $halaman == 'tambah-rekomendasi' || $halaman == 'ubah-rekomendasi' ? 'active' : '' ?>">
+                        <a class="nav-link" href="index.php?halaman=rekomendasi">
+                            <i class="fas fa-fw fa-user-cog"></i>
+                            <span>Rekomendasi Hasil Evaluasi</span>
+                        </a>
+                    </li>
+                <?php
+                }
+                ?>
+
 
 
             <?php
